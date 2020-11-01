@@ -1,6 +1,7 @@
 import './index.html';
 import './style.css';
 import { Layer } from './Layer';
+import { Drink } from './Drink';
 
 console.log('funguju!');
 
@@ -19,6 +20,43 @@ for (let i = 0; i < navClose.length; i++) {
     nav.classList.toggle('nav-closed');
   });
 }
+
+const drinks = [
+  {
+    id: 'cappuccino',
+    name: 'Cappuccino',
+    ordered: false,
+    layers: [
+      {
+        color: '#feeeca',
+        label: 'mléčná pěna',
+      },
+      {
+        color: '#fed7b0',
+        label: 'teplé mléko',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+  },
+  {
+    id: 'romano',
+    name: 'Romano',
+    ordered: false,
+    layers: [
+      {
+        color: '#fbdf5b',
+        label: 'citrón',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+  },
+];
 
 // objednavani
 
@@ -43,24 +81,30 @@ const pole = {
   label: 'mléčná pěna++',
 };
 
-const prvniVrstva = document.querySelectorAll('.layer');
+const firstLayer = document.querySelectorAll('.layer');
 
 // seznam ingredienci
 const layers = [
   {
     color: '#feeeca',
-    label: 'mléčná pěna--',
+    label: 'mléčná pěna1',
   },
   {
     color: '#fed7b0',
-    label: 'teplé mléko+-',
+    label: 'teplé mléko2',
   },
   {
     color: '#613916',
-    label: 'espresso++',
+    label: 'espresso3',
   },
 ];
 
 for (let i = 0; i < layers.length; i++) {
-  prvniVrstva[i].innerHTML = Layer(layers[i]);
+  firstLayer[i].innerHTML = Layer(layers[i]);
 }
+
+// napoj jako komponenta
+const drinkList = document.querySelector('drinks-list');
+drinks.forEach((drink) => {
+  drinkList.appendChild(Drink(drink));
+});
