@@ -1,5 +1,6 @@
 import './index.html';
 import './style.css';
+import { Layer } from './Layer';
 
 console.log('funguju!');
 
@@ -35,3 +36,31 @@ btnOrder.addEventListener('click', () => {
     ordered = false;
   }
 });
+
+// ingredience jako komponenty
+const pole = {
+  color: '#feeeca',
+  label: 'mléčná pěna++',
+};
+
+const prvniVrstva = document.querySelectorAll('.layer');
+
+// seznam ingredienci
+const layers = [
+  {
+    color: '#feeeca',
+    label: 'mléčná pěna--',
+  },
+  {
+    color: '#fed7b0',
+    label: 'teplé mléko+-',
+  },
+  {
+    color: '#613916',
+    label: 'espresso++',
+  },
+];
+
+for (let i = 0; i < layers.length; i++) {
+  prvniVrstva[i].innerHTML = Layer(layers[i]);
+}
